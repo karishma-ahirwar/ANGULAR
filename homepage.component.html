@@ -1,0 +1,35 @@
+<div id="from-container">
+      
+ <h2>Add Product</h2>
+   <form (submit)="addProduct()">
+     <div>
+       <!-- <label>Product name:</label> -->
+      <input type="text" [(ngModel)]="productName" name="productName" required placeholder="Product name">
+          </div>
+          <div> 
+            <!-- <label>Price:</label> -->
+     <input type="number" [(ngModel)]="price" name="price" required placeholder="Price">
+          </div>
+          <button type="submit">Add</button>
+        </form> 
+
+        <h2>Search Products</h2>
+     <input type="text" [(ngModel)]="searchQuery" name="searchQuery" (input)="filterProducts()" placeholder="Search">
+        <h2>List of Products</h2>
+        <div *ngIf="filteredProducts.length > 0; else noProducts">
+          <ul>
+            <li *ngFor="let product of filteredProducts">
+                {{ product.name }} - {{ product.price }}
+            </li>
+          </ul>
+        </div>
+        <ng-template #noProducts>
+          <p>No Product Found</p>
+        </ng-template>
+
+        <h2>Welcome to the Home Page</h2>
+      <button (click)="logout()">Logout</button>
+      
+      </div> 
+      
+      
